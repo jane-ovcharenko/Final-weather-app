@@ -19,7 +19,7 @@ li {
   line-height: 35px;
 }
 .weather-app-wrapper {
-  max-width: 800px;
+  max-width: 900px;
   margin: 30px auto;
 }
 .weather-app {
@@ -50,6 +50,7 @@ li {
 }
 .units {
   line-height: 40px;
+  font-size: 15px;
 }
 .description {
   line-height: 40px;
