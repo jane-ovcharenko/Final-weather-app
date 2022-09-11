@@ -64,8 +64,19 @@ function displayWeather(response) {
     );
 }
 
-let apiKey = `526506b876f3e352ea6d4d31547ae1fc`;
-let city = "Warsaw";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey = `526506b876f3e352ea6d4d31547ae1fc`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeather);
+}
 
-axios.get(apiUrl).then(displayWeather);
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+search("Warsaw");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
