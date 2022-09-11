@@ -1,3 +1,42 @@
+function formatDate(timestamp) {
+  let data = new Date(timestamp);
+  let hours = data.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = data.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[data.getDay()];
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let date = data.getDate();
+  let month = months[data.getMonth()];
+  return `${day} ${date} ${month}, ${hours}:${minutes}`;
+}
+
 function displayWeather(response) {
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
@@ -14,9 +53,13 @@ function displayWeather(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+  document.querySelector("#date").innerHTML = formatDate(
+    response.data.dt * 1000
+  );
 }
 
 let apiKey = `526506b876f3e352ea6d4d31547ae1fc`;
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Warsaw&appid=${apiKey}&units=metric`;
+let city = "Warsaw";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(displayWeather);
