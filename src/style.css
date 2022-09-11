@@ -19,6 +19,10 @@ li {
   font-weight: 200;
   line-height: 35px;
 }
+a {
+  text-decoration: none;
+  color: #fff;
+}
 .weather-app-wrapper {
   max-width: 900px;
   margin: 30px auto;
@@ -55,4 +59,10 @@ li {
 }
 .description {
   line-height: 40px;
+}
+.open-source {
+  color: #2934b5;
+}
+small .myname {
+  color: #000;
 }
