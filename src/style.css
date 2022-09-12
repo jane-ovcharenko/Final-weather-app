@@ -23,6 +23,11 @@ a {
   text-decoration: none;
   color: #fff;
 }
+a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
 .weather-app-wrapper {
   max-width: 900px;
   margin: 30px auto;

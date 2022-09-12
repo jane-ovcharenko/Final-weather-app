@@ -52,7 +52,10 @@
             <div class="col-4">
               <div class="d-flex weather-temperature">
                 <div class="temperature" id="temperature"></div>
-                <div class="units">°C| <a href="#">°F</a></div>
+                <div class="units">
+                  <a href="#" id="celsius-link">°C</a> |
+                  <a href="#" id="fahrenheit-link">°F</a>
+                </div>
               </div>
               <div class="description" id="description"></div>
             </div>
@@ -60,7 +63,10 @@
               <ul>
                 <li>
                   Feels like:<span id="feels-like"></span>
-                  <span class="units">°C| <a href="#">°F</a></span>
+                  <span class="units">
+                    <a href="#" id="celsius-link">°C</a> |
+                    <a href="#" id="fahrenheit-link">°F</a></span
+                  >
                 </li>
                 <li>Humidity: <span id="humidity"></span>%</li>
                 <li>Wind: <span id="wind"></span>km/h</li>
