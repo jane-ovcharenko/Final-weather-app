@@ -77,6 +77,11 @@ a:hover {
 .weather-forecast-temperature {
   font-size: 12px;
 }
+.col-2 {
+  background-color: #195e9f;
+  border: 1px solid #195e9f;
+  border-radius: 5px;
+}
 .open-source {
   color: #2934b5;
 }
