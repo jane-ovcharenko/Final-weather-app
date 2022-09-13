@@ -65,6 +65,18 @@ a:hover {
 .description {
   line-height: 40px;
 }
+
+.weather-forecast {
+  margin: 40px 20px;
+  text-align: center;
+}
+.weather-forecast-day {
+  font-size: 15px;
+  color: #fff;
+}
+.weather-forecast-temperature {
+  font-size: 12px;
+}
 .open-source {
   color: #2934b5;
 }
