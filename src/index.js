@@ -48,11 +48,12 @@ function displayWeather(response) {
   let iconElement = document.querySelector("#icon");
 
   celsiusTemperature = response.data.main.temp;
+  feelsLikeTemperature = response.data.main.feels_like;
 
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].main;
-  feelsLikeElement.innerHTML = Math.round(response.data.main.feels_like);
+  feelsLikeElement.innerHTML = Math.round(feelsLikeTemperature);
   humidityElement.innerHTML = Math.round(response.data.main.humidity);
   windElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
@@ -84,10 +85,25 @@ function displayFahrenheitTemp(event) {
 function displayCelsiusTemp(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement = Math.round(celsiusTemperature);
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+function displayFeelsLikeFahrenheitTemp(event) {
+  event.preventDefault();
+  let feelsLikeFahrenheit = document.querySelector("#feels-like");
+  feelsLikeFahrenheit.innerHTML = Math.round(
+    (feelsLikeTemperature * 9) / 5 + 32
+  );
+}
+
+function displayFeelsLikeCelsiusTemp(event) {
+  event.preventDefault();
+  let feelsLikeCelsius = document.querySelector("#feels-like");
+  feelsLikeCelsius.innerHTML = Math.round(feelsLikeTemperature);
 }
 
 let celsiusTemperature = null;
+let feelsLikeTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
@@ -97,5 +113,16 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemp);
+
+let feelsLikeFahrenheitLink = document.querySelector(
+  "#feels-like-fahrenheit-link"
+);
+feelsLikeFahrenheitLink.addEventListener(
+  "click",
+  displayFeelsLikeFahrenheitTemp
+);
+
+let feelsLikeCelsiusLink = document.querySelector("#feels-like-celsius-link");
+feelsLikeCelsiusLink.addEventListener("click", displayFeelsLikeCelsiusTemp);
 
 search("Warsaw");
