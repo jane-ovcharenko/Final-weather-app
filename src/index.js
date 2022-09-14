@@ -37,7 +37,7 @@ function formatDate(timestamp) {
   return `${day} ${date} ${month}, ${hours}:${minutes}`;
 }
 
-function displayWeatherForecast() {
+function displayWeatherForecast(response) {
   let weatherForecastElement = document.querySelector("#weather-forecast");
 
   let weatherForecastHTML = `<div class="row">`;
@@ -61,6 +61,12 @@ function displayWeatherForecast() {
 
   weatherForecastHTML = weatherForecastHTML + `</div>`;
   weatherForecastElement.innerHTML = weatherForecastHTML;
+}
+
+function getForecast(coordinates) {
+  let apiKey = `526506b876f3e352ea6d4d31547ae1fc`;
+  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeatherForecast);
 }
 
 function displayWeather(response) {
@@ -87,6 +93,8 @@ function displayWeather(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -150,7 +158,5 @@ feelsLikeFahrenheitLink.addEventListener(
 
 let feelsLikeCelsiusLink = document.querySelector("#feels-like-celsius-link");
 feelsLikeCelsiusLink.addEventListener("click", displayFeelsLikeCelsiusTemp);
-
-displayWeatherForecast();
 
 search("Warsaw");
