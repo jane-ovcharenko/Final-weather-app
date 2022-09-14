@@ -37,6 +37,32 @@ function formatDate(timestamp) {
   return `${day} ${date} ${month}, ${hours}:${minutes}`;
 }
 
+function displayWeatherForecast() {
+  let weatherForecastElement = document.querySelector("#weather-forecast");
+
+  let weatherForecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    weatherForecastHTML =
+      weatherForecastHTML +
+      `<div class="col-2">
+                <div class="weather-forecast-day">${day}</div>
+                <img
+                  src="http://openweathermap.org/img/wn/50d@2x.png"
+                  alt=""
+                  width="45"
+                />
+                <div class="weather-forecast-temperatures">
+                  <span class="weather-forecast-temperature-max">18° | </span
+                  ><span class="weather-forecast-temperature-min">12°</span>
+                </div>
+              </div>`;
+  });
+
+  weatherForecastHTML = weatherForecastHTML + `</div>`;
+  weatherForecastElement.innerHTML = weatherForecastHTML;
+}
+
 function displayWeather(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -124,5 +150,7 @@ feelsLikeFahrenheitLink.addEventListener(
 
 let feelsLikeCelsiusLink = document.querySelector("#feels-like-celsius-link");
 feelsLikeCelsiusLink.addEventListener("click", displayFeelsLikeCelsiusTemp);
+
+displayWeatherForecast();
 
 search("Warsaw");
