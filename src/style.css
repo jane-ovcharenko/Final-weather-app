@@ -19,14 +19,6 @@ li {
   font-weight: 200;
   line-height: 35px;
 }
-a {
-  text-decoration: none;
-  color: #fff;
-}
-a:hover {
-  text-decoration: none;
-  color: #fff;
-}
 
 .weather-app-wrapper {
   max-width: 900px;
@@ -87,6 +79,11 @@ a:hover {
 }
 .open-source {
   color: #2934b5;
+}
+
+.open-source:hover {
+  color: #2934b5;
+  text-decoration: none;
 }
 small .myname {
   color: #000;
